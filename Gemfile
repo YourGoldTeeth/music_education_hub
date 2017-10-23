@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # *** MY GEMS ***
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'devise'

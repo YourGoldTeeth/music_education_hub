@@ -14,8 +14,29 @@
  *= require_self
  */
 
-@import 'bootstrap-sprockets';
+// @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
+// @import '_cards';
+// @import '_footer';
+// @import '_mixins';
+// @import '_navbar_colors';
+// @import '_navbar_fixed';
+// @import '_navbar_global';
+// @import '_navbar_static';
+// @import '_navbar_toggle';
+// @import '_utilities';
+// @import '_variables';
+@import 'sb-admin';
+@import 'bootstrap-grid';
+@import 'bootstrap-reboot';
+@import 'dataTables.bootstrap4';
+// @import 'scaffolds';
+
 
 // @import 'products';
+@import 'assignments';
+
+.content-wrapper {
+	margin-top: 56px;
+}
