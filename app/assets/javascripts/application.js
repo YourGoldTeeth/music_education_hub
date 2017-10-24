@@ -14,12 +14,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
-//= require sb-admin-charts
-//= require sb-admin-datatables
-//= require sb-admin
-//= require dataTables.bootstrap4
-//= require jquery.dataTables
-//= require jquery.easing.compatibility
-//= require jquery.easing
 //= require turbolinks
 //= require_tree .

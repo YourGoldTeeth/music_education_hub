@@ -14,7 +14,7 @@
   <!-- Custom styles for this template-->
   <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -26,6 +26,9 @@
       <div class="container-fluid">
         <%= yield %>
       </div>
+    <script src="app/assets/javascripts/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="app/assets/javascripts/sb-admin.min.js"></script>
     </div>    
   </body>
     

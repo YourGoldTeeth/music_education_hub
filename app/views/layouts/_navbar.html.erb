@@ -1,76 +1,47 @@
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <%= link_to "BJ's Music Hub", index_path, class: 'navbar-brand' %>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- SIDEBAR -->
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Assignments">
+          <a class="nav-link">
+            <!-- <i class="fa fa-fw fa-pencil-square-o"></i> -->
+            <%= link_to "Assignments", assignments_path, class: 'nav-link nav-link-text' %>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Guitar">
+          <a class="nav-link">
+            <!-- <i class="fa fa-fw fa-google"></i> -->
+            <span class="nav-link-text">Guitar</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bass">
           <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tables</span>
+            <!-- <i class="fa fa-fw fa-bold"></i> -->
+            <span class="nav-link-text">Bass</span>
           </a>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Piano">
+          <a class="nav-link" href="tables.html">
+            <!-- <i class="fa fa-fw fa-keyboard-o"></i> -->
+            <span class="nav-link-text">Piano</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="navbar.html">Navbar</a>
-            </li>
-            <li>
-              <a href="cards.html">Cards</a>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Age">
+          <a class="nav-link" href="tables.html">
+            <!-- <i class="fa fa-fw fa-calendar"></i> -->
+            <span class="nav-link-text">Age</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Login Page</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
           <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
+            <!-- <i class="fa fa-fw fa-link"></i> -->
+            <span class="nav-link-text">Transcriptions</span>
           </a>
         </li>
       </ul>
@@ -165,6 +136,7 @@
         </li>
       </ul>
     </div>
+    <!-- Core plugin JavaScript-->
   </nav>
 
 
