@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :assignment_title %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div class="field form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :assignment_title %>
+      </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :assignment_user_id %>
-  </div>
+      <div class="field form-group">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, @users.collect { |c| [ c.name, c.id ] }, { include_blank: "Please select a user" } %>
+      </div>
 
-  <div class="field">
-    <%= form.label :homework_id %>
-    <%= form.number_field :homework_id, id: :assignment_homework_id %>
-  </div>
+      <div class="field form-group">
+        <%= form.label :attachment %>
+        <%= form.file_field :attachment, id: :assignment_attachment %>
+      </div>
 
-  <div class="field">
-    <%= form.label :attachment %>
-    <%= form.text_field :attachment, id: :assignment_attachment %>
-  </div>
+      <div class="btn btn-primary">
+        <%= form.submit %>
+      </div>
+    </div>
+  </div>  
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+
 <% end %>

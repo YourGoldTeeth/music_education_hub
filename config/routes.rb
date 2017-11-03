@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'homepage/index'
-
+  resources :homeworks
   resources :assignments
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +7,12 @@ Rails.application.routes.draw do
 get 'index' => 'homepage#index'
 
 get 'assignments' => 'assignments#index'
+
+get 'homeworks' => 'homeworks#index'
+
+get 'couple' => 'homeworks#couple'
+
+root 'homepage#index'
 
 # root "home#index"
 

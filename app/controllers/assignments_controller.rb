@@ -1,6 +1,8 @@
 class AssignmentsController < ApplicationController
+  # load_and_authorize_resource
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  
 
   # GET /assignments
   # GET /assignments.json
@@ -11,16 +13,21 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    @assignment = Assignment.find(params[:id])
+    authorize! :read, @assignment
   end
 
   # GET /assignments/new
   def new
+    @users = User.all
     @assignment = Assignment.new
   end
 
   # GET /assignments/1/edit
   def edit
   end
+
+
 
   # POST /assignments
   # POST /assignments.json
