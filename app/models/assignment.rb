@@ -2,7 +2,8 @@ class Assignment < ApplicationRecord
   mount_uploader :attachment, AttachmentUploader
 
   belongs_to :user
-  belongs_to :homework, optional: true
+  has_one :homework
+  accepts_nested_attributes_for :homework
 
   validates :title, presence: true
   validates :user_id, presence: true

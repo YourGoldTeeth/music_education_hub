@@ -3,6 +3,7 @@ class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   
+  
 
   # GET /assignments
   # GET /assignments.json
@@ -21,6 +22,7 @@ class AssignmentsController < ApplicationController
   def new
     @users = User.all
     @assignment = Assignment.new
+    # @assignment.homework.build
   end
 
   # GET /assignments/1/edit

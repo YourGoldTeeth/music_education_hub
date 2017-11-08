@@ -16,20 +16,18 @@
     <%= form.text_field :name, id: :homework_name %>
   </div>
 
-  <div class="field">
+<!--   <div class="field">
     <div>
-      <%= form.hidden_field :user_id, :value => @user.id %>
+      <%= form.hidden_field colonassignment_id, colonvalue => @homework.assignment_id %>
     </div>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :assignment_id, :assignment_id %>
-  </div>
+  </div> -->
 
   <div class="field form-group">
     <%= form.label :attachment %>
     <%= form.file_field :attachment, id: :homework_attachment %>
   </div>
+
+
 
   <div class="actions">
     <%= form.submit %>

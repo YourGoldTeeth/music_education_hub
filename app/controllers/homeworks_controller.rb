@@ -1,5 +1,7 @@
 class HomeworksController < ApplicationController
   before_action :set_homework, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  
 
   # GET /homeworks
   # GET /homeworks.json
@@ -15,9 +17,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks/new
   def new
     @user = current_user
-    # @assignment_id = assignment.id
-    @homework = Homework.new
-    # @homework_assignment_id = :assignment_id
+    @homework = Homework.new 
   end
 
 
@@ -28,9 +28,10 @@ class HomeworksController < ApplicationController
   # POST /homeworks
   # POST /homeworks.json
   def create
-    @user = current_user
-    @homework = Homework.new(homework_params(assignment_id: params[:assignment_id]))
-    # @homework.set_user!(current_user)
+    @homework = Homework.new(homework_params)
+    @homework.user_id = current_user.id
+    assignment_id = params[:assignment_id]
+    @homework.assignment_id = assignment_id
 
     respond_to do |format|
       if @homework.save
@@ -75,7 +76,7 @@ class HomeworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def homework_params
-      params.require(:homework).permit(:name, :user_id, :assignment_id, :attachment)
+      params.require(:homework).permit(:name, :user_id, :attachment)
     end
 end
 
