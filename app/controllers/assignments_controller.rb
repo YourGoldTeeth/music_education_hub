@@ -2,13 +2,20 @@ class AssignmentsController < ApplicationController
   # load_and_authorize_resource
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  
-  
 
   # GET /assignments
   # GET /assignments.json
   def index
-    @assignments = Assignment.all
+    if can? :update, Assignment
+      @assignments = Assignment.all
+    else  
+      @assignments = Assignment.where(user_id: current_user.id) 
+    end
+    
+    @last_updated = Assignment.last 
+
+      
+
   end
 
   # GET /assignments/1
@@ -27,6 +34,7 @@ class AssignmentsController < ApplicationController
 
   # GET /assignments/1/edit
   def edit
+    @users = User.all
   end
 
 

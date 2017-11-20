@@ -1,4 +1,4 @@
-<%= form_with(model: homework, local: true) do |form| %>
+<%= form_for(@homework, local: true) do |form| %>
   <% if homework.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(homework.errors.count, "error") %> prohibited this homework from being saved:</h2>
@@ -16,18 +16,16 @@
     <%= form.text_field :name, id: :homework_name %>
   </div>
 
-<!--   <div class="field">
-    <div>
-      <%= form.hidden_field colonassignment_id, colonvalue => @homework.assignment_id %>
-    </div>
-  </div> -->
-
   <div class="field form-group">
     <%= form.label :attachment %>
     <%= form.file_field :attachment, id: :homework_attachment %>
   </div>
 
-
+  <div class="field">
+    <div>
+      <%= form.hidden_field :assignment_id, value: @assignment_id %>
+    </div>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

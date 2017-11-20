@@ -27,8 +27,7 @@
                   <tr>
                     <td><%= homework.id %></td>
                     <td><%= homework.user.name %></td>
-                    <!-- <td><%= homework.name %></td> -->
-                    <!-- <td><%= homework.assignment.title %></td> -->
+
                     <td><%= link_to homework.name, homework.attachment_url %></td>
                     <td><%= link_to homework.assignment.title, homework.assignment.attachment_url %></td>
                     <td><%= link_to 'Show', homework %></td>

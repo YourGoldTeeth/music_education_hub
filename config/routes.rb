@@ -10,8 +10,6 @@ get 'assignments' => 'assignments#index'
 
 get 'homeworks' => 'homeworks#index'
 
-get 'couple' => 'homeworks#couple'
-
 root 'homepage#index'
 
 # root "home#index"

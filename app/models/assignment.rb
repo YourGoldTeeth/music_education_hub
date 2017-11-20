@@ -3,7 +3,6 @@ class Assignment < ApplicationRecord
 
   belongs_to :user
   has_one :homework
-  accepts_nested_attributes_for :homework
 
   validates :title, presence: true
   validates :user_id, presence: true

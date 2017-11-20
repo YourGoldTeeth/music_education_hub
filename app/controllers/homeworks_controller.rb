@@ -17,25 +17,33 @@ class HomeworksController < ApplicationController
   # GET /homeworks/new
   def new
     @user = current_user
-    @homework = Homework.new 
+    # @assignments = Assignment.where(user_id: current_user.id) 
+    @homework = Homework.new
+    @assignment_id = params[:assignment_id].to_i 
   end
 
 
   # GET /homeworks/1/edit
   def edit
+    @user = current_user
+    @assignment_id = params[:assignment_id].to_i
   end
 
   # POST /homeworks
   # POST /homeworks.json
   def create
-    @homework = Homework.new(homework_params)
+    @homework = Homework.new(homework_params) 
     @homework.user_id = current_user.id
-    assignment_id = params[:assignment_id]
-    @homework.assignment_id = assignment_id
+    @assignment_id = params[:assignment_id].to_i
 
     respond_to do |format|
       if @homework.save
-        format.html { redirect_to @homework, notice: 'Homework was successfully created.' }
+        homework_id = @homework.id
+        select_assignment_id = @homework.assignment_id
+        @homework.add_homework_id_to_assignment(select_assignment_id, homework_id)
+        
+        # format.html { redirect_to @assignments, notice: 'Homework was successfully created.' }
+        format.html { redirect_to homework_path(@homework), notice: 'Homework was successfully created.' }
         format.json { render :show, status: :created, location: @homework }
       else
         format.html { render :new }
@@ -76,7 +84,7 @@ class HomeworksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def homework_params
-      params.require(:homework).permit(:name, :user_id, :attachment)
+      params.require(:homework).permit(:name, :user_id, :attachment, :assignment_id)
     end
 end
 
