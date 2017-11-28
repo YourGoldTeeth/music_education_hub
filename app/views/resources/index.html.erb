@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<h1> <%=current_user.instrument.name %> Resources</h1>
+
+<% @resources.each do |resource| %>
+      <div class="well">
+        <div class="col-md-4">
+          <div class="offset-md-2">
+            <p><%= image_tag resource.attachment.url, style: 'width: 20%', class: 'img-thumbnail'  %></p>
+            <h3><%= link_to resource.name %></h3>
+            <td><%= link_to "Download Resource", resource.attachment_url %>
+          </div>
+        </div>
+      </div> 
+<% end  %>       
+
+<%= link_to 'New Resource', new_resource_path %>

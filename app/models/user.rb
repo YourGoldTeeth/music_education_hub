@@ -9,6 +9,7 @@ ROLES = %i[admin guest]
 
   has_many :assignments
   has_many :homeworks
+  belongs_to :instrument
 
   validates :username, presence: true, uniqueness: true
 

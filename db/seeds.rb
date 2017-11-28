@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+categories = ["Guitar", "Bass", "Piano", "Voice", "Drums"]
+
+categories.each do |category_name|
+	Instrument.create(name: category_name)
+end	
+
+puts "Your database has been seeded."

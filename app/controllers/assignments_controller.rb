@@ -11,10 +11,8 @@ class AssignmentsController < ApplicationController
     else  
       @assignments = Assignment.where(user_id: current_user.id) 
     end
-    
+    @resources = Resource.all
     @last_updated = Assignment.last 
-
-      
 
   end
 

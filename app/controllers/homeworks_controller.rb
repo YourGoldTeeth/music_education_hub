@@ -7,6 +7,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks.json
   def index
     @homeworks = Homework.all
+    @resources = Resource.all
   end
 
   # GET /homeworks/1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101020429) do
+ActiveRecord::Schema.define(version: 20171120235352) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,20 @@ ActiveRecord::Schema.define(version: 20171101020429) do
     t.string "attachment"
   end
 
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string "name"
+    t.integer "instrument_id"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,6 +61,8 @@ ActiveRecord::Schema.define(version: 20171101020429) do
     t.string "username"
     t.integer "age"
     t.string "role"
+    t.integer "instrument_id"
+    t.integer "secondary_instrument_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

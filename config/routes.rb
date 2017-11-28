@@ -1,7 +1,22 @@
 Rails.application.routes.draw do
+
+  
+
+  resources :resources
   resources :homeworks
   resources :assignments
   devise_for :users
+  # devise_for :users, :controllers => {:registrations => "registrations"}
+
+  # get 'registrations/new'
+
+  # get 'registrations/create'
+
+  # get 'registrations/update'
+
+  # get 'registrations/destroy'
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 get 'index' => 'homepage#index'

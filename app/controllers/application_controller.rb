@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :age, :password_confirmation, :role)
+    params.require(:user).permit(:name, :username, :email, :password, :age, :password_confirmation, :role, :instrument_id)
   end
+  
 
   protected
 
