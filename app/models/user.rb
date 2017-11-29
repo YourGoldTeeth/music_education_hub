@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-
-ROLES = %i[admin guest]
+# ROLES = %i[admin guest]
    
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,6 +9,8 @@ ROLES = %i[admin guest]
   has_many :assignments
   has_many :homeworks
   belongs_to :instrument
+  belongs_to :role
+  before_validation :set_default_role 
 
   validates :username, presence: true, uniqueness: true
 
@@ -19,7 +20,12 @@ ROLES = %i[admin guest]
   end
 
   def guest?
-    role == "guest"
+    role == "student"
   end
+
+  private
+  def set_default_role
+    self.role ||= Role.find_by_name('student')
+  end 
 
 end

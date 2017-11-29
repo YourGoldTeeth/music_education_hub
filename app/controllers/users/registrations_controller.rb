@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    @instruments = Instrument.all
     super
   end
 
@@ -47,8 +48,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   
   def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role])
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role])
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role_id])
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role_id])
   end
 
 
