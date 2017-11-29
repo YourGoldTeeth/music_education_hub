@@ -1,54 +1,77 @@
-<h2>Sign up</h2>
+<body class="bg-dark">
+  <div class="container">
+    <div class="col align-self-center">
+      <div class="row">
+      
+        <div class="card card-login mx-auto mt-5">
+          <div class="card-header align-middle">JB's Music Hub</div>
+          <div class="card-body align-middle">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+            <h2>Sign up</h2>
 
-  <div class="field form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-  </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
 
-  <div class="field form-group">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
+              <div class="field form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+              </div>
 
-  <div class="field form-group">
-    <%= f.label :username %><br>
-    <%= f.text_field :username, class: 'form-control' %>
-  </div>
+              <div class="field form-group">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
 
-  <div class="field form-group">
-    <%= f.label :instrument_id %><br>
-    <%= f.select :instrument_id, @instruments.collect { |c| [ c.name, c.id ] }, { include_blank: "Please select an instrument" } %>
-  </div>
+              <div class="field form-group">
+                <%= f.label :username %><br>
+                <%= f.text_field :username, class: 'form-control' %>
+              </div>
 
-  <div class="field form-group">
-    <%= f.label :age %><br>
-    <%= f.text_field :age, class: 'form-control' %>
-  </div>
+              <div class="field form-group">
+                <span class="glyphicon glyphicon-menu-down">
+                  <%= f.label :instrument_id %><br>
+                  <%= f.select :instrument_id, @instruments.collect { |c| [ c.name, c.id ]} , { include_blank: "Please select an instrument" }, class: 'btn btn-secondary dropdown-toggle', type: 'button' %>
+                </span>
+              </div>
 
-  <div class="form-group">
-    <%= f.label :role %><br>
-    <%= f.text_field :role, class: 'form-control' %>
-  </div>
+              <div class="field form-group">
+                <%= f.label :age %><br>
+                <%= f.text_field :age, class: 'form-control' %>
+              </div>
 
-  <div class="field form-control">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-  </div>
+              <div class="form-group">
+                <%= f.label :role %><br>
+                <%= f.text_field :role, class: 'form-control' %>
+              </div>
 
-  <div class="field form-control">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
-  </div>
+              <br>  
+              <hr>
+              <br>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+              <div class="form-group">
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+              </div>
 
-<%= render "devise/shared/links" %>
+              <div class="form-group">
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up" %>
+              </div>
+            <% end %>
+
+            <%= render "devise/shared/links" %>
+          </div>    
+        </div>    
+      </div>    
+    </div>    
+  </div>  
+</body>  
+
+

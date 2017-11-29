@@ -6,13 +6,12 @@ class ApplicationController < ActionController::Base
   def user_params
     params.require(:user).permit(:name, :username, :email, :password, :age, :password_confirmation, :role, :instrument_id)
   end
-  
 
   protected
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :name, :role])
-   devise_parameter_sanitizer.permit(:account_update, keys: [:username, :name, :role])
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role])
+   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :username, :email, :password, :age, :password_confirmation, :instrument_id, :role])
   end
 end
 

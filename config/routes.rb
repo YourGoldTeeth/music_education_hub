@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
-  
-
   resources :resources
   resources :homeworks
   resources :assignments
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+      }
+
+    devise_scope :users do
+      get 'sign_up', to: 'users/registrations#new'
+    end      
+
   # devise_for :users, :controllers => {:registrations => "registrations"}
 
   # get 'registrations/new'
