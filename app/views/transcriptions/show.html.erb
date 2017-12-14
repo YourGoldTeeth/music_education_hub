@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @transcription.name %>
+</p>
+
+<p>
+  <strong>Composer:</strong>
+  <%= @transcription.composer %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @transcription.genre %>
+</p>
+
+<p>
+  <strong>Video game:</strong>
+  <%= @transcription.video_game %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @transcription.attachment %>
+</p>
+
+<%= link_to 'Edit', edit_transcription_path(@transcription) %> |
+<%= link_to 'Back', transcriptions_path %>

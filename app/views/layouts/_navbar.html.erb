@@ -25,18 +25,16 @@
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Resources">
           <% if can? :update, Resource %>
-            <% @resources.each do |resource| %>
-              <%= link_to "#{resource.name} Resources", resources_path, class: 'nav-link nav-link-text' %>
-            <% end %>
+            <%# @resources.each do |resource| %>
+              <%= link_to "Resources", resources_path, class: 'nav-link nav-link-text' %>
+              <%#= link_to "#{resource.name} Resources", resources_path, class: 'nav-link nav-link-text' %>
+            <%# end %>
           <% else  %>
             <%= link_to "#{current_user.instrument.name} Resources", resources_path, class: 'nav-link nav-link-text' %>    
           <% end %>  
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <!-- <i class="fa fa-fw fa-link"></i> -->
-            <span class="nav-link-text">Transcriptions</span>
-          </a>
+            <%= link_to "Transciption", transcriptions_path, class: 'nav-link nav-link-text' %>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
@@ -115,7 +113,7 @@
         
         <% if current_user %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Signed in as: <%= current_user.name %>
             </a>
             

@@ -20,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/edit
   def edit
     @instruments = Instrument.all
+    @resources = Resource.all
     super
   end
 

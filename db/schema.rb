@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129163854) do
+ActiveRecord::Schema.define(version: 20171201224928) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 20171129163854) do
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transcriptions", force: :cascade do |t|
+    t.string "name"
+    t.string "composer"
+    t.string "genre"
+    t.string "video_game"
+    t.string "attachment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

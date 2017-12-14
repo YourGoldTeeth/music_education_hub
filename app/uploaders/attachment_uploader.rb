@@ -8,10 +8,6 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-  version :thumb do
-    process resize_to_fill: [200,200]
-  end
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
@@ -21,6 +17,19 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %w(pdf doc docx txt jpg jpeg)
   end
+
+  def cover 
+    manipulate! do |frame, index|
+      frame if index.zero?
+    end
+  end
+
+  # version :thumb do
+  #   process :cover
+  #   process :convert => 'jpg'
+  #   process :resize_to_fill => [50, 50]
+  # end
+  
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

@@ -8,11 +8,13 @@ class AssignmentsController < ApplicationController
   def index
     if can? :update, Assignment
       @assignments = Assignment.all
+      @last_updated = Assignment.last
     else  
-      @assignments = Assignment.where(user_id: current_user.id) 
+      @assignments = Assignment.where(user_id: current_user.id)
+      @last_updated = Assignment.where(user_id: current_user.id).last
     end
     @resources = Resource.all
-    @last_updated = Assignment.last 
+     
 
   end
 
@@ -20,6 +22,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1.json
   def show
     @assignment = Assignment.find(params[:id])
+    @resources = Resource.all
     authorize! :read, @assignment
   end
 
@@ -27,6 +30,7 @@ class AssignmentsController < ApplicationController
   def new
     @users = User.all
     @assignment = Assignment.new
+    @resources = Resource.all
     # @assignment.homework.build
   end
 
@@ -41,6 +45,8 @@ class AssignmentsController < ApplicationController
   # POST /assignments.json
   def create
     @assignment = Assignment.new(assignment_params)
+    @users = User.all
+    @resources = Resource.all
 
     respond_to do |format|
       if @assignment.save

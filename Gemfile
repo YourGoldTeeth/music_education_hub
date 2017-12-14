@@ -42,6 +42,7 @@ gem 'paperclip'  # Mac only or gem 'carrierwave' for PC or Mac
 gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+# gem 'rmagick'
 gem 'stamp'
 
 group :development, :test do

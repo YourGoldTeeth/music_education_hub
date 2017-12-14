@@ -21,6 +21,7 @@ class HomeworksController < ApplicationController
     # @assignments = Assignment.where(user_id: current_user.id) 
     @homework = Homework.new
     @assignment_id = params[:assignment_id].to_i 
+    @resources = Resource.all
   end
 
 

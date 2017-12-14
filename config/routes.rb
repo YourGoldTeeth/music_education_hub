@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :transcriptions
   resources :resources
   resources :homeworks
   resources :assignments

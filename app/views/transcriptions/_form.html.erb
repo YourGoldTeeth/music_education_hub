@@ -1,0 +1,42 @@
+<%= form_with(model: transcription, local: true) do |form| %>
+  <% if transcription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transcription.errors.count, "error") %> prohibited this transcription from being saved:</h2>
+
+      <ul>
+      <% transcription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :transcription_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :composer %>
+    <%= form.text_field :composer, id: :transcription_composer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genre %>
+    <%= form.text_field :genre, id: :transcription_genre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_game %>
+    <%= form.text_field :video_game, id: :transcription_video_game %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attachment %>
+    <%= form.file_field :attachment, id: :transcription_attachment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
