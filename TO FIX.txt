@@ -1,0 +1,11 @@
+TO FIX:
+
+-Style forgot your password page
+-Style transcriptions/resources page better
+-Set up notifications
+-Set up mailer
+
+DONE:
+
+-Get JS tables working (look up mData)
+-Edit homework from assignments page

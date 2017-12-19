@@ -4,13 +4,15 @@
       <div class="row">
       
         <div class="card card-login mx-auto mt-5">
-          <div class="card-header align-middle">JB's Music Hub</div>
+          <div class="card-header align-middle">BJ's Music Hub - Sign Up</div>
           <div class="card-body align-middle">
 
             <h2>Sign up</h2>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <%= devise_error_messages! %>
+            
 
               <div class="field form-group">
                 <%= f.label :email %><br />
@@ -30,7 +32,7 @@
               <div class="field form-group">
                 <span class="glyphicon glyphicon-menu-down">
                   <%= f.label :instrument_id %><br>
-                  <%= f.select :instrument_id, @instruments.collect { |c| [ c.name, c.id ]} , { include_blank: "Please select an instrument" }, class: 'btn btn-secondary dropdown-toggle', type: 'button' %>
+                  <%= f.select :instrument_id, @instruments.collect { |c| [ c.name, c.id ]} , { include_blank: "Please select an instrument" }, class: 'dropdown-toggle' %>
                 </span>
               </div>
 
@@ -62,10 +64,11 @@
               </div>
 
               <div class="actions">
-                <%= f.submit "Sign up" %>
+                <%= f.submit "Sign up", class: 'btn btn-primary' %>
               </div>
             <% end %>
 
+            <p>Already have an account?</p>
             <%= render "devise/shared/links" %>
           </div>    
         </div>    

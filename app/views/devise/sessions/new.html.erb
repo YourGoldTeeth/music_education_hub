@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,13 +8,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Music Hub - Log In</title>
-  <!-- Bootstrap core CSS-->
-  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+   Bootstrap core CSS -->
+  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <!-- <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
   <!-- Custom styles for this template-->
   <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
-</head>
+<!-- </head> --> -->
 
 <body class="bg-dark">
   <!-- <div class="containter">
@@ -30,7 +30,8 @@
       <div class="row">
         <!-- <div class="d-inline-block"> -->
           <div class="card card-login mx-auto mt-5">
-            <div class="card-header align-middle">JB's Music Hub Login</div>
+            <div class="card-header align-middle">BJ's Music Hub - Login</div>
+            <!-- <img src="app/assets/images/logo.jpg"> -->
             <div class="card-body align-middle">
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
               <div class="field">
@@ -51,7 +52,7 @@
               <% end -%>
 
               <div class="actions">
-                <%= f.submit "Log in" %>
+                <%= f.submit "Log in", class: 'btn btn-primary' %>
               </div>
             <% end %>
 
