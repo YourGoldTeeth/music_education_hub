@@ -6,7 +6,15 @@ class HomeworksController < ApplicationController
   # GET /homeworks
   # GET /homeworks.json
   def index
-    @homeworks = Homework.all
+    # @homeworks = Homework.all
+    if can? :update, Homework
+      @homeworks = Homework.all
+      @last_updated = Homework.last
+    else  
+      @homeworks = Homework.where(user_id: current_user.id)
+      @last_updated = Homework.where(user_id: current_user.id).last
+    end
+
     @resources = Resource.all
   end
 
@@ -57,8 +65,15 @@ class HomeworksController < ApplicationController
   # PATCH/PUT /homeworks/1
   # PATCH/PUT /homeworks/1.json
   def update
+    @homework.user_id = current_user.id
+    @assignment_id = params[:assignment_id].to_i
+
     respond_to do |format|
       if @homework.update(homework_params)
+        homework_id = @homework.id
+        select_assignment_id = @homework.assignment_id
+        @homework.add_homework_id_to_assignment(select_assignment_id, homework_id)
+
         format.html { redirect_to @homework, notice: 'Homework was successfully updated.' }
         format.json { render :show, status: :ok, location: @homework }
       else

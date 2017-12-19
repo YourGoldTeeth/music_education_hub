@@ -21,7 +21,11 @@
                   <th>User</th>
                   <th>Homework</th>
                   <th>Assignment</th>
-                  <th colspan="3"></th>
+                  <th>Edit Homework</th>
+                <% if can? :update, Assignment %>
+                  <th>Edit Assignment</th>
+                  <th >Delete Assignment</th>
+                <% end %>
                 </tr>
               </thead>
               <tfoot>
@@ -32,7 +36,11 @@
                   <th>User</th>
                   <th>Homework</th>
                   <th>Assignment</th>
-                  <th colspan="3"></th>
+                  <th>Edit Homework</th>
+                <% if can? :update, Assignment %>
+                  <th>Edit Assignment</th>
+                  <th>Delete Assignment</th>
+                <% end %>  
                 </tr>
               </tfoot>
               <tbody>
@@ -54,13 +62,13 @@
                     <td><%= link_to "Download Assignment", assignment.attachment_url %></td>
 
                     <% if assignment.homework_id != nil %>
-                      <td><%= link_to 'Edit Homework', edit_homework_path(assignment.homework) %></td>
+                      <td><%= link_to 'Edit Homework', edit_homework_path(assignment.homework, :assignment_id => assignment.id ) %></td>
                     <% else %>
                       <td>
                         <p style="color:red"> No Homework Uploaded </p>
                       </td> 
                     <% end %>  
-                    <% if can? :update, assignment %>
+                    <% if can? :update, Assignment %>
                       <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>
                       <td><%= link_to 'Delete', assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     <% end %>
@@ -80,4 +88,16 @@
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      document.addEventListener("turbolinks:load", function() {
+        my_func();
+      })
+    </script>
+
+<!--     <script type="text/javascript">
+      $(document).ready(function() {
+        $('#dataTable').DataTable();   
+      });
+    </script> -->
 
