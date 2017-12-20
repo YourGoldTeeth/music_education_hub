@@ -1,0 +1,13 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+	<%= link_to "Homepage", root_path %>
+  </li>
+  <% if @back %>
+	  <li class="breadcrumb-item active">
+	  	<%= link_to "#{@back}", url_for(:back) %>
+	  </li>
+  <% end  %>
+  <li class="breadcrumb-item active">
+  	<%= @breadcrumb %>
+  </li>
+</ol>

@@ -14,13 +14,15 @@ class HomeworksController < ApplicationController
       @homeworks = Homework.where(user_id: current_user.id)
       @last_updated = Homework.where(user_id: current_user.id).last
     end
-
     @resources = Resource.all
+    @breadcrumb = "Your Homework Table"
   end
 
   # GET /homeworks/1
   # GET /homeworks/1.json
   def show
+    @back = "Your Homework Table"
+    @breadcrumb = "View Homework"
   end
 
   # GET /homeworks/new
@@ -30,6 +32,8 @@ class HomeworksController < ApplicationController
     @homework = Homework.new
     @assignment_id = params[:assignment_id].to_i 
     @resources = Resource.all
+    @back = "Your Assignments Table"
+    @breadcrumb = "Upload New Homework"
   end
 
 
@@ -37,6 +41,8 @@ class HomeworksController < ApplicationController
   def edit
     @user = current_user
     @assignment_id = params[:assignment_id].to_i
+    @back = "Your Assignments Table"
+    @breadcrumb = "Edit Uploaded Homework"
   end
 
   # POST /homeworks

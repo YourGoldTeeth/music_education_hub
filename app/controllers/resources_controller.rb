@@ -9,6 +9,7 @@ class ResourcesController < ApplicationController
     else  
       @resources = Resource.where(instrument_id: current_user.instrument_id) 
     end
+    @breadcrumb = "Your Instrument's Resources"
   end
 
   # GET /resources/1

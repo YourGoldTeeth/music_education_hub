@@ -14,8 +14,7 @@ class AssignmentsController < ApplicationController
       @last_updated = Assignment.where(user_id: current_user.id).last
     end
     @resources = Resource.all
-     
-
+    @breadcrumb = "Your Assignments Table" 
   end
 
   # GET /assignments/1
@@ -24,6 +23,8 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find(params[:id])
     @resources = Resource.all
     authorize! :read, @assignment
+    @back = "Your Assignments Table"
+    @breadcrumb = "View Assignment" 
   end
 
   # GET /assignments/new
@@ -31,12 +32,16 @@ class AssignmentsController < ApplicationController
     @users = User.all
     @assignment = Assignment.new
     @resources = Resource.all
+    @back = "Your Assignments Table"
+    @breadcrumb = "New Assignment" 
     # @assignment.homework.build
   end
 
   # GET /assignments/1/edit
   def edit
     @users = User.all
+    @back = "Your Assignments Table"
+    @breadcrumb = "Edit Assignment"
   end
 
 

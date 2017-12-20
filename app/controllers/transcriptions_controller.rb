@@ -5,6 +5,7 @@ class TranscriptionsController < ApplicationController
   # GET /transcriptions.json
   def index
     @transcriptions = Transcription.all
+    @breadcrumb = "Transcriptions Index"
   end
 
   # GET /transcriptions/1
