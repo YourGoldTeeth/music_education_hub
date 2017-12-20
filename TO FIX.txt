@@ -1,11 +1,11 @@
 TO FIX:
 
--Style transcriptions/resources page better
 -Set up notifications
 -Set up mailer
 
 DONE:
 
+-Style transcriptions/resources page better
 -Get JS tables working (look up mData)
 -Edit homework from assignments page
 -Style forgot your password page

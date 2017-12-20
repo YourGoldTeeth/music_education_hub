@@ -6,20 +6,32 @@
   <%= link_to 'New Transcription', new_transcription_path, style: "margin-bottom:20px;", class: 'btn btn-primary' %>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    <div class="well">
-      <% @transcriptions.each do |transcription| %>
-        <div class="col-md-4">
-          <div class="offset-md-2">
-            
-            <p><%= image_tag transcription.attachment.url, style: 'width: 20%', class: 'img-thumbnail'  %></p>
-            <h3><%= link_to transcription.name %></h3>
-            <td><%= link_to "Download Resource", transcription.attachment_url %>
-                       
-          </div>
-        </div>
-      <% end %>
-    </div> 
-  </div>  
-</div>
+<div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Composer</th>
+          <th>Genre</th>
+          <th>Video Game</th>
+          <th>Download</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+
+      <tbody> 
+        <% @transcriptions.each do |transcription| %>
+          <tr>
+            <td><%= transcription.name %></td>
+            <td><%= transcription.composer  %></td>
+            <td><%= transcription.genre %></td>
+            <td><%= transcription.video_game %></td>
+            <td><%= link_to "Download", transcription.attachment_url %></td>
+            <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
+            <td><%= link_to 'Delete', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           </tr>
+        <% end %>
+      </tbody>
+    </table>  

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1> <%#=current_user.instrument.name %> Resources</h1>
+<h1> Resources</h1>
 
 <% if can? :update, Assignment %>
 	<%= link_to 'New Resource', new_resource_path, style: "margin-bottom:20px;", class: 'btn btn-primary' %>
@@ -7,19 +7,20 @@
 
 <div class="container">
 	<div class="row">
-		<div class="well">
-			<% @resources.each do |resource| %>
-			  <div class="col-md-4">
-			    <div class="offset-md-2">
-						
-			        <p><%= image_tag resource.attachment.url, style: 'width: 20%', class: 'img-thumbnail'  %></p>
-			        <h3><%= link_to resource.name %></h3>
-			        <td><%= link_to "Download Resource", resource.attachment_url %>
-			                 
-			    </div>
+		<% @resources.each do |resource| %>
+			<div class="col-xl-3 col-sm-6 mb-3">
+	      <div class="card mb-3">
+	        <div class="card-header">
+									
+			        <%= image_tag resource.attachment.url, style: 'width: 50%', class: 'img-thumbnail', class: 'rounded mx-auto d-block img-thumbnail'  %>
+			        <br>
+			        <h3 class="text-center"><%= link_to resource.name %></h3>
+			        <p class="text-center"><%= link_to "Download Resource", resource.attachment_url %></p>  
+					</div>           
 			  </div>
-		  <% end  %>
-		</div> 
-	</div>	
-</div>
+		  </div>
+		<% end  %>        
+  </div> 
+</div>	
+
 
