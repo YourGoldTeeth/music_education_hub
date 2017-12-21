@@ -22,7 +22,7 @@
 				 		  <br>
 				 		  Please use the nav bar on the side to retrieve assignments, download resources and upload homework.
 
-				 		  <img src="app/assets/images/logo.jpg">
+				 		  <%#= image_tag("logo.jpg", :alt => "logo"), class: 'img-responsive'%>
 		        </div>
 		        
 	      	</div>	
@@ -37,14 +37,38 @@
 		        
 		        <div class="card-body">
 		        	<div class="embed-responsive embed-responsive-16by9">
-		         		<iframe width="560" height="315" src="https://www.youtube.com/embed/UJ_Y8EQqerM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+		         		<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/UJ_Y8EQqerM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
 		       		</div>
 		        </div>
-		        
 	      	</div>	
 	    	</div> 				
+			</div>
+			<div class="row">
+				<div class="card mb-3">
+            <div class="card-header">
+              <i class="fa fa-bell-o"></i> Feed Example</div>
+            <div class="list-group list-group-flush small">
+              <% @notifications.each do |notification| %>
+              
+	              <a class="list-group-item list-group-item-action" href="#">
+	                <div class="media">
+	                  
+	                  <div class="media-body">
+	                    <strong>New</strong>assignment posted
+	                    <strong><%= notification.title %></strong>.
+	                    <div class="text-muted smaller">Today at <%=notification.created_at.stamp("Sun Aug 5")%> - Xm ago</div>
+	                  </div>
+
+	                </div>
+	              </a>
+	            <% end  %>  
+              <a class="list-group-item list-group-item-action" href="#">View all activity...</a>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
 			</div>	
 	</div>
 </div>
+
 
 
