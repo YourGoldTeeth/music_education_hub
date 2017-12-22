@@ -17,7 +17,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Date</th>
-                  <th>Title</th>
+                  <th>Name</th>
                   <th>User</th>
                   <th>Homework</th>
                   <th>Assignment</th>
@@ -32,7 +32,7 @@
                 <tr>
                   <th>ID</th>
                   <th>Date</th>
-                  <th>Title</th>
+                  <th>Name</th>
                   <th>User</th>
                   <th>Homework</th>
                   <th>Assignment</th>
@@ -48,7 +48,7 @@
                   <tr>
                     <td><%= assignment.id %></td>
                     <td><%= assignment.created_at.stamp("Sun Aug 5, 01") %></td>
-                    <td><%= assignment.title %></td>
+                    <td><%= assignment.name %></td>
                     <td><%= assignment.user.name %></td>
 
                     <% if assignment.homework_id != nil %>

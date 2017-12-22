@@ -6,20 +6,58 @@ class TranscriptionsController < ApplicationController
   def index
     @transcriptions = Transcription.all
     @breadcrumb = "Transcriptions Index"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /transcriptions/1
   # GET /transcriptions/1.json
   def show
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /transcriptions/new
   def new
     @transcription = Transcription.new
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /transcriptions/1/edit
   def edit
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # POST /transcriptions

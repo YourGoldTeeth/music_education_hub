@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201224928) do
+ActiveRecord::Schema.define(version: 20171221183242) do
 
   create_table "assignments", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.integer "user_id"
     t.integer "homework_id"
     t.datetime "created_at", null: false

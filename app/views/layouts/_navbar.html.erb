@@ -85,16 +85,20 @@
               <% @notifications.each do |notification| %>
                 <a class="dropdown-item" href="">
                   <span class="text-success">
-                    <strong>Assignment Uploaded</strong>
+                    <% if @admin == true %>
+                      <strong><%= notification.user.name %> Uploaded</strong>
+                    <% else %>  
+                      <strong>Admin Uploaded</strong>
+                    <% end  %>  
                   </span>
 
                   <span class="small float-right text-muted"><%=notification.created_at.stamp("Sun Aug 5")%></span>
 
                   <div class="dropdown-message small">
-                    <%=notification.title%> was uploaded for your review
+                    <%=notification.name%>
                   </div>
                 </a>
-                <div class="dropdown-divider"></div>
+                
               <% end %>
             
             <div class="dropdown-divider"></div>
@@ -137,7 +141,13 @@
       </ul>
     </div>
     <!-- Core plugin JavaScript-->
-  </nav> 
+  </nav>
+
+<script type="text/javascript">
+    $('#alertsDropdown').click(function() {
+    $('.fa-circle').css('display', 'none');
+  });
+</script> 
 
 
 

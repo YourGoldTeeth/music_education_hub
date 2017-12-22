@@ -10,6 +10,16 @@ class ResourcesController < ApplicationController
       @resources = Resource.where(instrument_id: current_user.instrument_id) 
     end
     @breadcrumb = "Your Instrument's Resources"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /resources/1
@@ -21,11 +31,31 @@ class ResourcesController < ApplicationController
   def new
     @resource = Resource.new
     @instruments = Instrument.all
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /resources/1/edit
   def edit
     @instruments = Instrument.all
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # POST /resources

@@ -1,11 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :alert_check
   before_action :authenticate_user!
   protect_from_forgery with: :exception
 
   def user_params
     params.require(:user).permit(:name, :username, :email, :password, :age, :password_confirmation, :role, :instrument_id)
   end
+
+  # def alert_check
+  #   if current_user.role_id == 4
+  #     @alert_check = Homework.last.id
+  #   else  
+  #     @alert_check = Assignment.where(user_id: current_user.id).last.id
+  #   end
+  # end  
 
   protected
 

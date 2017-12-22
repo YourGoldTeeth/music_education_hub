@@ -15,6 +15,16 @@ class AssignmentsController < ApplicationController
     end
     @resources = Resource.all
     @breadcrumb = "Your Assignments Table" 
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /assignments/1
@@ -25,6 +35,16 @@ class AssignmentsController < ApplicationController
     authorize! :read, @assignment
     @back = "Your Assignments Table"
     @breadcrumb = "View Assignment" 
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end 
   end
 
   # GET /assignments/new
@@ -35,6 +55,16 @@ class AssignmentsController < ApplicationController
     @back = "Your Assignments Table"
     @breadcrumb = "New Assignment" 
     # @assignment.homework.build
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /assignments/1/edit
@@ -42,6 +72,16 @@ class AssignmentsController < ApplicationController
     @users = User.all
     @back = "Your Assignments Table"
     @breadcrumb = "Edit Assignment"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
 

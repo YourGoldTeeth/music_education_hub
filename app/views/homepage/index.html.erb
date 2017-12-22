@@ -2,6 +2,7 @@
 	<div class="row">
 		<div class="text-center">
 			<h1>Welcome to JB's Music Hub</h1>
+			<!-- <h1>Last notification id #:<%= @alert_check %></h1>	 -->
 		</div>	
 			<hr>
 			<br>
@@ -32,7 +33,7 @@
 	        <div class="card mb-3">
 		        
 		        <div class="card-header">
-		           Latest Video
+		           <i class="fa fa-play"></i> Latest Video
 		        </div>
 		        
 		        <div class="card-body">
@@ -46,25 +47,28 @@
 			<div class="row">
 				<div class="card mb-3">
             <div class="card-header">
-              <i class="fa fa-bell-o"></i> Feed Example</div>
+              <i class="fa fa-bell-o"></i> Upload Feed</div>
             <div class="list-group list-group-flush small">
               <% @notifications.each do |notification| %>
-              
-	              <a class="list-group-item list-group-item-action" href="#">
+	              <div class="list-group-item list-group-item-action" href="">
 	                <div class="media">
-	                  
 	                  <div class="media-body">
-	                    <strong>New</strong>assignment posted
-	                    <strong><%= notification.title %></strong>.
-	                    <div class="text-muted smaller">Today at <%=notification.created_at.stamp("Sun Aug 5")%> - Xm ago</div>
-	                  </div>
 
+	                  	<% if @admin == true %>
+                      	<strong><%= notification.user.name %> Uploaded</strong>
+	                    <% else %>  
+	                      <strong>Admin Uploaded</strong>
+	                    <% end  %>
+
+	                    <%= link_to notification.name, @notification %>
+	                    <div class="text-muted smaller">On <%=notification.created_at.stamp("Sun Aug 5")%></div>
+	                  </div>
 	                </div>
-	              </a>
+	              </div>
 	            <% end  %>  
-              <a class="list-group-item list-group-item-action" href="#">View all activity...</a>
+              <!-- <a class="list-group-item list-group-item-action" href="#">View all activity...</a> -->
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
           </div>
 			</div>	
 	</div>

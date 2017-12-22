@@ -16,6 +16,16 @@ class HomeworksController < ApplicationController
     end
     @resources = Resource.all
     @breadcrumb = "Your Homework Table"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /homeworks/1
@@ -23,6 +33,16 @@ class HomeworksController < ApplicationController
   def show
     @back = "Your Homework Table"
     @breadcrumb = "View Homework"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # GET /homeworks/new
@@ -34,6 +54,16 @@ class HomeworksController < ApplicationController
     @resources = Resource.all
     @back = "Your Assignments Table"
     @breadcrumb = "Upload New Homework"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
 
@@ -43,6 +73,16 @@ class HomeworksController < ApplicationController
     @assignment_id = params[:assignment_id].to_i
     @back = "Your Assignments Table"
     @breadcrumb = "Edit Uploaded Homework"
+
+    if current_user.role_id == 4
+      @notifications = Homework.all
+      @alert_check = Homework.last.id
+      @admin = true
+    else  
+      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @admin = false
+    end
   end
 
   # POST /homeworks
