@@ -5,7 +5,7 @@ class HomepageController < ApplicationController
   	@resources = Resource.all
   	
   	if current_user.role_id == 4
-  		@notifications = Homework.all
+  		@notifications = Homework.all.order("created_at DESC")
   		# @alert_check = Homework.last.id
   		@admin = true
   	else	

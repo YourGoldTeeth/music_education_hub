@@ -4,7 +4,7 @@ class Assignment < ApplicationRecord
   belongs_to :user
   has_one :homework
 
-  validates :title, presence: true
+  validates :name, presence: true
   validates :user_id, presence: true
   # # validates :homework_id, presence: true, allow_nil: true
   validates :attachment, presence: true

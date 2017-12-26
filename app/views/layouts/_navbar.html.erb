@@ -74,7 +74,9 @@
               <span class="badge badge-pill badge-warning">6 New</span>
             </span>
             <span class="indicator text-warning d-none d-lg-block">
-              <i class="fa fa-fw fa-circle"></i>
+              <% if @admin %>
+                <i class="fa fa-fw fa-circle" ></i>
+              <% end %>
             </span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
@@ -143,11 +145,18 @@
     <!-- Core plugin JavaScript-->
   </nav>
 
-<script type="text/javascript">
-    $('#alertsDropdown').click(function() {
-    $('.fa-circle').css('display', 'none');
-  });
-</script> 
+<% if @admin %>
+  <script type="text/javascript">
+      $('#alertsDropdown').load(function() {
+      $('.fa-circle').css('display', 'inline');
+    });
+
+
+      $('#alertsDropdown').click(function() {
+      $('.fa-circle').css('display', 'none');
+    });
+  </script> 
+<% end %>  
 
 
 

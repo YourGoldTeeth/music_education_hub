@@ -17,7 +17,7 @@ class AssignmentsController < ApplicationController
     @breadcrumb = "Your Assignments Table" 
 
     if current_user.role_id == 4
-      @notifications = Homework.all
+      @notifications = Homework.all.order("created_at DESC")
       @alert_check = Homework.last.id
       @admin = true
     else  
@@ -136,6 +136,6 @@ class AssignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
-      params.require(:assignment).permit(:title, :user_id, :homework_id, :attachment)
+      params.require(:assignment).permit(:name, :user_id, :homework_id, :attachment)
     end
 end
