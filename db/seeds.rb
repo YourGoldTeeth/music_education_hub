@@ -12,8 +12,23 @@
 # 	Instrument.create(name: category_name)
 # end
 
-['student', 'banned', 'moderator', 'admin', 'guest'].each do |role|
-  Role.find_or_create_by({name: role})
+# ['student', 'banned', 'moderator', 'admin', 'guest'].each do |role|
+#   Role.find_or_create_by({name: role})
+# end	
+
+# user 2
+[28]
+# users 5-9
+n_array = [23, 34, 32, 35,]
+count = 5
+
+n_array.each do |x|
+	if count <= 9
+		u = User.find(count)
+		u.update_attribute(:notification_id, x)
+		count = count + 1
+	end
 end	
 
-puts "Your role database has been seeded."
+puts "Your notification_id database has been seeded."
+puts "Maggie, User 5, should be 23."

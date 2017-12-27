@@ -1,13 +1,14 @@
 <div class="container">
 	<div class="row">
 		<div class="text-center">
-			<h1>Welcome to JB's Music Hub</h1>
+			<h1>Welcome to BJ's Music Hub</h1>
 			<!-- <h1>Last notification id #:<%= @alert_check %></h1>	 -->
 		</div>	
 			<hr>
 			<br>
+
 			<div class="row">
-				<div class="col-xl-8 col-md-6 col-sm-6 mb-3">
+				<div class="col-xl-4 col-md-6 col-sm-6 mb-3">
 	        <div class="card mb-3">
 		        
 		        <div class="card-header">
@@ -42,37 +43,69 @@
 		       		</div>
 		        </div>
 	      	</div>	
-	    	</div> 				
-			</div>
-			<div class="row">
+	    	</div>
+	    				<div class="col-xl-4 col-md-3 col-sm-3 mb-3">
 				<div class="card mb-3">
-            <div class="card-header">
-              <i class="fa fa-bell-o"></i> Upload Feed</div>
-            <div class="list-group list-group-flush small">
-              <% @notifications.each do |notification| %>
-	              <div class="list-group-item list-group-item-action" href="">
-	                <div class="media">
-	                  <div class="media-body">
+		            <div class="card-header">
+		              <i class="fa fa-bell-o"></i>
+		              <% if @alert %>
+		                <i class="fa fa-fw fa-circle"></i>
+		                <div style="color:red">New Upload</div>
+		              <% end %>
+		               Upload Feed</div>
+		            <div class="list-group list-group-flush small">
+		              <% @notifications.each do |notification| %>
+			              <div class="list-group-item list-group-item-action" href="">
+			                <div class="media">
+			                  <div class="media-body">
 
-	                  	<% if @admin == true %>
-                      	<strong><%= notification.user.name %> Uploaded</strong>
-	                    <% else %>  
-	                      <strong>Admin Uploaded</strong>
-	                    <% end  %>
+			                  	<% if @admin == true %>
+		                      	<strong><%= notification.user.name %> Uploaded</strong>
+			                    <% else %>  
+			                      <strong>Admin Uploaded</strong>
+			                    <% end  %>
 
-	                    <%= link_to notification.name, @notification %>
-	                    <div class="text-muted smaller">On <%=notification.created_at.stamp("Sun Aug 5")%></div>
-	                  </div>
-	                </div>
-	              </div>
-	            <% end  %>  
-              <!-- <a class="list-group-item list-group-item-action" href="#">View all activity...</a> -->
-            </div>
-            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
-          </div>
-			</div>	
+			                    <%= link_to notification.name, assignments_path %>
+			                    <div class="text-muted smaller">On <%=notification.created_at.stamp("Sun Aug 5")%></div>
+			                  </div>
+			                </div>
+			              </div>
+			            <% end  %>  
+		              <!-- <a class="list-group-item list-group-item-action" href="#">View all activity...</a> -->
+		            </div>
+		            <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+		          </div>
+			</div> 				
+			</div>
+
+	
 	</div>
 </div>
+
+<% if @alert %>
+  <script type="text/javascript">
+
+    $('#alertsDropdown').click(
+      function() {
+        $('.fa-circle').css('display', 'none');
+    });
+
+    // $('#alertsDropdown').click(
+    //   function() {
+    //     <% current_user.update_attribute(:notification_id, @alert_check) %> 
+    // });
+      
+  //     $('#alertsDropdown').click(
+  //       function() {
+  //       $('.fa-circle').css('display', 'none');
+  //     },
+  //       function () {
+  //       
+  //     }
+  //   );
+  // };    
+  </script> 
+<% end %>  
 
 
 

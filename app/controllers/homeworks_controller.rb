@@ -7,7 +7,7 @@ class HomeworksController < ApplicationController
   # GET /homeworks.json
   def index
     # @homeworks = Homework.all
-    if can? :update, Homework
+    if current_user.role_id == 4
       @homeworks = Homework.all
       @last_updated = Homework.last
     else  

@@ -2,9 +2,38 @@ class AssignmentsController < ApplicationController
   # load_and_authorize_resource
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :alert_check
 
   # GET /assignments
   # GET /assignments.json
+  def alert_check
+    if current_user.role_id == 4
+      @alert_check = Homework.last.id
+      @notif_id = current_user.notification_id
+        if @alert_check > @notif_id
+           @alert = true
+           # if @clicked  
+           #    current_user.update_attribute(:notification_id, @alert_check)
+           #    @clicked = false
+           # end   
+        else   
+           @alert = false
+        end
+    else  
+      @alert_check = Assignment.where(user_id: current_user.id).last.id
+      @notif_id = current_user.notification_id
+      if @alert_check > @notif_id
+           @alert = true
+           # if @clicked  
+              # current_user.update_attribute(:notification_id, @alert_check)
+              # @clicked = false
+           # end 
+        else   
+           @alert = false
+        end
+    end
+  end 
+
   def index
     if can? :update, Assignment
       @assignments = Assignment.all

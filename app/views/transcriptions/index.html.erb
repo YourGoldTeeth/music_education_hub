@@ -16,8 +16,10 @@
           <th>Genre</th>
           <th>Video Game</th>
           <th>Download</th>
-          <th>Edit</th>
-          <th>Delete</th>
+          <% if current_user.role_id == 4 %>
+            <th>Edit</th>
+            <th>Delete</th>
+          <% end %>
         </tr>
       </thead>
 
@@ -29,8 +31,10 @@
             <td><%= transcription.genre %></td>
             <td><%= transcription.video_game %></td>
             <td><%= link_to "Download", transcription.attachment_url %></td>
-            <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
-            <td><%= link_to 'Delete', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if current_user.role_id == 4 %>
+              <td><%= link_to 'Edit', edit_transcription_path(transcription) %></td>
+              <td><%= link_to 'Delete', transcription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>  
            </tr>
         <% end %>
       </tbody>
