@@ -12,13 +12,17 @@ class ResourcesController < ApplicationController
     @breadcrumb = "Your Instrument's Resources"
 
     if current_user.role_id == 4
-      @notifications = Homework.all.order("created_at DESC")
-      @alert_check = Homework.last.id
-      @admin = true
-    else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
+      if current_user.notification_id != 0 
+        @notifications = Homework.all.order("created_at DESC")
+        @alert_check = Homework.last.id
+        @admin = true
+      end  
+    else
+      if current_user.notification_id != 0   
+        @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+        @admin = false
+      end  
     end
   end
 
@@ -33,13 +37,17 @@ class ResourcesController < ApplicationController
     @instruments = Instrument.all
 
     if current_user.role_id == 4
-      @notifications = Homework.all
-      @alert_check = Homework.last.id
-      @admin = true
+      if current_user.notification_id != 0 
+        @notifications = Homework.all
+        @alert_check = Homework.last.id
+        @admin = true
+      end
     else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
+      if current_user.notification_id != 0 
+        @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+        @admin = false
+      end  
     end
   end
 
@@ -48,13 +56,17 @@ class ResourcesController < ApplicationController
     @instruments = Instrument.all
 
     if current_user.role_id == 4
-      @notifications = Homework.all
-      @alert_check = Homework.last.id
-      @admin = true
+      if current_user.notification_id != 0 
+        @notifications = Homework.all
+        @alert_check = Homework.last.id
+        @admin = true
+      end  
     else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
+      if current_user.notification_id != 0 
+        @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+        @admin = false
+      end  
     end
   end
 

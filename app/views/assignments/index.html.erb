@@ -83,7 +83,9 @@
               <!-- <#% if @assignment.blank? %> -->
                <!-- none -->
               <!-- <#% else  %>   -->
+              <% if current_user.notification_id != 0  %>
                 Last updated on <%= @last_updated.updated_at.stamp("Sun Aug 5, 01") %> at <%= @last_updated.updated_at.stamp("9:00 am") %> 
+              <% end %>  
               <!-- <#% end %> -->
         </div>
       </div>

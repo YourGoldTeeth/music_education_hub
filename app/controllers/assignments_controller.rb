@@ -19,18 +19,22 @@ class AssignmentsController < ApplicationController
         else   
            @alert = false
         end
-    else  
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @notif_id = current_user.notification_id
-      if @alert_check > @notif_id
-           @alert = true
-           # if @clicked  
-              # current_user.update_attribute(:notification_id, @alert_check)
-              # @clicked = false
-           # end 
-        else   
-           @alert = false
-        end
+    else
+# if statement below to ensure that new users do not get error because they do not have any assignments assigned to them.
+      if current_user.notification_id != 0  
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+
+        @notif_id = current_user.notification_id
+        if @alert_check > @notif_id
+             @alert = true
+             # if @clicked  
+                # current_user.update_attribute(:notification_id, @alert_check)
+                # @clicked = false
+             # end 
+          else   
+             @alert = false
+          end
+      end     
     end
   end 
 
@@ -46,13 +50,18 @@ class AssignmentsController < ApplicationController
     @breadcrumb = "Your Assignments Table" 
 
     if current_user.role_id == 4
-      @notifications = Homework.all.order("created_at DESC")
-      @alert_check = Homework.last.id
-      @admin = true
-    else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
+      if current_user.notification_id != 0 
+        @notifications = Homework.all.order("created_at DESC")
+        @alert_check = Homework.last.id
+        @admin = true
+      end
+    else
+# if statement below to ensure that new users do not get error because they do not have any assignments assigned to them.
+      if current_user.notification_id != 0  
+        @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+        @admin = false
+      end  
     end
   end
 
@@ -66,13 +75,17 @@ class AssignmentsController < ApplicationController
     @breadcrumb = "View Assignment" 
 
     if current_user.role_id == 4
-      @notifications = Homework.all
-      @alert_check = Homework.last.id
-      @admin = true
+      if current_user.notification_id != 0 
+        @notifications = Homework.all
+        @alert_check = Homework.last.id
+        @admin = true
+      end  
     else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
+      if current_user.notification_id != 0 
+        @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+        @alert_check = Assignment.where(user_id: current_user.id).last.id
+        @admin = false
+      end  
     end 
   end
 
@@ -85,15 +98,15 @@ class AssignmentsController < ApplicationController
     @breadcrumb = "New Assignment" 
     # @assignment.homework.build
 
-    if current_user.role_id == 4
-      @notifications = Homework.all
-      @alert_check = Homework.last.id
-      @admin = true
-    else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
-    end
+    # if current_user.role_id == 4
+    #   @notifications = Homework.all
+    #   @alert_check = Homework.last.id
+    #   @admin = true
+    # else  
+    #   @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+    #   @alert_check = Assignment.where(user_id: current_user.id).last.id
+    #   @admin = false
+    # end
   end
 
   # GET /assignments/1/edit
@@ -102,15 +115,15 @@ class AssignmentsController < ApplicationController
     @back = "Your Assignments Table"
     @breadcrumb = "Edit Assignment"
 
-    if current_user.role_id == 4
-      @notifications = Homework.all
-      @alert_check = Homework.last.id
-      @admin = true
-    else  
-      @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
-      @alert_check = Assignment.where(user_id: current_user.id).last.id
-      @admin = false
-    end
+    # if current_user.role_id == 4
+    #   @notifications = Homework.all
+    #   @alert_check = Homework.last.id
+    #   @admin = true
+    # else  
+    #   @notifications = Assignment.where(user_id: current_user.id).order("created_at DESC")
+    #   @alert_check = Assignment.where(user_id: current_user.id).last.id
+    #   @admin = false
+    # end
   end
 
 

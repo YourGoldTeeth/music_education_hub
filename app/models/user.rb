@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to :instrument
   belongs_to :role
   before_validation :set_default_role 
+  before_validation :set_validation_id 
 
   validates :username, presence: true, uniqueness: true
 
@@ -27,5 +28,9 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= Role.find_by_name('student')
   end 
+
+  def set_validation_id
+    self.update_attribute(:notification_id, 0)
+  end
 
 end

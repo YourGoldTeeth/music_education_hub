@@ -67,43 +67,6 @@
             <a class="dropdown-item small" href="#">View all messages</a>
           </div>
         </li> -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-bell"></i>
-            <span class="d-lg-none">Alerts
-              <span class="badge badge-pill badge-warning">6 New</span>
-            </span>
-            <span class="indicator text-warning d-none d-lg-block">
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">New Alerts:</h6>
-            <div class="dropdown-divider"></div>
-            
-            
-              <% @notifications.each do |notification| %>
-                <a class="dropdown-item" href="">
-                  <span class="text-success">
-                    <% if @admin == true %>
-                      <strong><%= notification.user.name %> Uploaded</strong>
-                    <% else %>  
-                      <strong>Admin Uploaded</strong>
-                    <% end  %>  
-                  </span>
-
-                  <span class="small float-right text-muted"><%=notification.created_at.stamp("Sun Aug 5")%></span>
-
-                  <div class="dropdown-message small">
-                    <%=notification.name%>
-                  </div>
-                </a>
-                
-              <% end %>
-            
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item small" href="#">View all alerts</a>
-          </div>
-        </li> -->
         
         <% if current_user %>
           <li class="nav-item dropdown">
